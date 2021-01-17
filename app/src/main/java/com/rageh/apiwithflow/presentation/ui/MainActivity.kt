@@ -1,7 +1,8 @@
-package com.rageh.apiwithflow
+package com.rageh.apiwithflow.presentation.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.rageh.apiwithflow.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

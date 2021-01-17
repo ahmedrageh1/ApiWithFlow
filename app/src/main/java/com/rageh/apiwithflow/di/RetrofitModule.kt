@@ -1,6 +1,7 @@
 package com.rageh.apiwithflow.di
 
 import com.chenxyu.retrofit.adapter.FlowCallAdapterFactory
+import com.rageh.apiwithflow.data.api.Webservice
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,6 +42,12 @@ class RetrofitModule {
             .addConverterFactory(gsonConverterFactory)
             .addCallAdapterFactory(FlowCallAdapterFactory())
             .client(client).build()
+
+    @Inject
+    @Provides
+    @Singleton
+    fun getWebservice(retrofit: Retrofit) =
+        retrofit.create(Webservice::class.java)
 
 
     companion object {
