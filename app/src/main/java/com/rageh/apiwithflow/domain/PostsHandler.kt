@@ -5,4 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PostsHandler @Inject constructor(private val repo: PostsRepo)
+class PostsHandler @Inject constructor(private val repo: PostsRepo) {
+
+    fun getPosts() = repo.getPosts()
+}

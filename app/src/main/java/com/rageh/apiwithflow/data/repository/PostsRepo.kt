@@ -5,4 +5,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PostsRepo @Inject constructor(private val webservice: Webservice)
+class PostsRepo @Inject constructor(private val webservice: Webservice) {
+
+    fun getPosts() = loadFromApi()
+
+
+    private fun loadFromApi() =
+        webservice.getPosts()//.map { add caching code here }
+
+}
