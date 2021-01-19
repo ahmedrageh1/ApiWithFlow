@@ -6,6 +6,10 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="com.rageh.apiwithflow.data.api.entity.Status" />
+
         <import type="com.rageh.apiwithflow.presentation.ui.posts.PostsViewModel" />
 
         <variable
@@ -31,6 +35,17 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="4"
             tools:listitem="@layout/item_post" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{vm.postsData.status==Status.LOADING ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

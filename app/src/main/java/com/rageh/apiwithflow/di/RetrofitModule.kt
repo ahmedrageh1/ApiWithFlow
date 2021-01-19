@@ -1,7 +1,7 @@
 package com.rageh.apiwithflow.di
 
-import com.chenxyu.retrofit.adapter.FlowCallAdapterFactory
 import com.rageh.apiwithflow.data.api.Webservice
+import com.rageh.apiwithflow.retrofit.adapter.FlowCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

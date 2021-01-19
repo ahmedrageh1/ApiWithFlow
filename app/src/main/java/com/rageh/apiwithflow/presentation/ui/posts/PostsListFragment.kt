@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.rageh.apiwithflow.R
+import com.rageh.apiwithflow.data.api.entity.Status
+import com.rageh.apiwithflow.data.entity.Post
 import com.rageh.apiwithflow.databinding.FragmentPostsListBinding
 import com.rageh.apiwithflow.presentation.adapter.PostsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,8 +47,13 @@ class PostsListFragment : Fragment() {
     }
 
     private fun observeDataChanges() {
-        viewModel.postsData.observe(viewLifecycleOwner, {
-            adapter.submitList(it)
+        viewModel.postsData.observe(viewLifecycleOwner, { resource ->
+            when (resource.status.get()) {
+                Status.SUCCESS -> resource.data?.let { adapter.submitList(it as List<Post>) }
+                Status.ERROR -> Toast.makeText(requireContext(), resource.msg, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
         })
     }
 
