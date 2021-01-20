@@ -4,4 +4,6 @@
     <string name="msg_network_error">Network error, Please check your internet connection.</string>
     <string name="msg_auth_error">Authentication error, please re-login.</string>
     <string name="msg_not_found_error">Sorry, the requested item not available.</string>
+    <string name="posts">Posts</string>
+    <string name="albums">Albums</string>
 </resources>

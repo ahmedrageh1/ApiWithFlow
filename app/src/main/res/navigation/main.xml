@@ -8,7 +8,23 @@
     <fragment
         android:id="@+id/postsListFragment"
         android:name="com.rageh.apiwithflow.presentation.ui.posts.PostsListFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_posts_list" />
+        android:label="fragment_posts"
+        tools:layout="@layout/fragment_posts_list">
+        <action
+            android:id="@+id/action_to_albumsListFragment"
+            app:destination="@id/albumsListFragment"
+            app:popUpTo="@id/main" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/albumsListFragment"
+        android:name="com.rageh.apiwithflow.presentation.ui.albums.AlbumsListFragment"
+        android:label="fragment_albums"
+        tools:layout="@layout/fragment_albums_list">
+        <action
+            android:id="@+id/action_to_postsListFragment"
+            app:destination="@id/postsListFragment"
+            app:popUpTo="@id/main" />
+    </fragment>
 
 </navigation>

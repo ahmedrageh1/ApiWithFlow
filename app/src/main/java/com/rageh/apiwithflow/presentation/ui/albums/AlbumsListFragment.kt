@@ -1,4 +1,4 @@
-package com.rageh.apiwithflow.presentation.ui.posts
+package com.rageh.apiwithflow.presentation.ui.albums
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,27 +10,27 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.rageh.apiwithflow.R
 import com.rageh.apiwithflow.data.api.entity.Status
-import com.rageh.apiwithflow.data.entity.Post
-import com.rageh.apiwithflow.databinding.FragmentPostsListBinding
-import com.rageh.apiwithflow.presentation.adapter.PostsAdapter
+import com.rageh.apiwithflow.data.entity.Album
+import com.rageh.apiwithflow.databinding.FragmentAlbumsListBinding
+import com.rageh.apiwithflow.presentation.adapter.AlbumsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PostsListFragment : Fragment() {
+class AlbumsListFragment : Fragment() {
 
-    private val viewModel by viewModels<PostsViewModel>()
-    private lateinit var binding: FragmentPostsListBinding
+    private val viewModel by viewModels<AlbumsViewModel>()
+    private lateinit var binding: FragmentAlbumsListBinding
     private val adapter by lazy {
-        PostsAdapter()
+        AlbumsAdapter()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate<FragmentPostsListBinding>(
+        binding = DataBindingUtil.inflate<FragmentAlbumsListBinding>(
             inflater,
-            R.layout.fragment_posts_list,
+            R.layout.fragment_albums_list,
             container,
             false
         ).apply {
@@ -47,9 +47,9 @@ class PostsListFragment : Fragment() {
     }
 
     private fun observeDataChanges() {
-        viewModel.postsData.observe(viewLifecycleOwner, { result ->
+        viewModel.albumsData.observe(viewLifecycleOwner, { result ->
             when (result.status.get()) {
-                Status.SUCCESS -> result.data?.let { adapter.submitList(it as List<Post>) }
+                Status.SUCCESS -> result.data?.let { adapter.submitList(it as List<Album>) }
                 Status.ERROR -> Toast.makeText(requireContext(), result.msg, Toast.LENGTH_SHORT)
                     .show()
                 else -> {
