@@ -1,7 +1,7 @@
 # ApiWithFlow
 
 sample project to explain how to build solid, clean architected and easy to maintain project using retrofit with flow adapter
-and how to access the same flow through all application layes with configuration changes and generic error handing in professional way  
+and how to access the same flow through all application layers with configuration changes and generic error handing in professional way  
 
 ### Techniques
 * Kotlin
@@ -21,5 +21,6 @@ and how to access the same flow through all application layes with configuration
 
 ### Sources
 
-https://developer.android.com/jetpack/guide
-https://proandroiddev.com/android-error-handling-in-clean-architecture-844a7fc0dc03
+* https://developer.android.com/jetpack/guide
+* https://proandroiddev.com/android-error-handling-in-clean-architecture-844a7fc0dc03
+* https://github.com/chenxyu/retrofit-adapter-flow
