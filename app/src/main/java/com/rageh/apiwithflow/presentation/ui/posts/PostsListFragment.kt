@@ -47,11 +47,13 @@ class PostsListFragment : Fragment() {
     }
 
     private fun observeDataChanges() {
-        viewModel.postsData.observe(viewLifecycleOwner, { resource ->
-            when (resource.status.get()) {
-                Status.SUCCESS -> resource.data?.let { adapter.submitList(it as List<Post>) }
-                Status.ERROR -> Toast.makeText(requireContext(), resource.msg, Toast.LENGTH_SHORT)
+        viewModel.postsData.observe(viewLifecycleOwner, { result ->
+            when (result.status.get()) {
+                Status.SUCCESS -> result.data?.let { adapter.submitList(it as List<Post>) }
+                Status.ERROR -> Toast.makeText(requireContext(), result.msg, Toast.LENGTH_SHORT)
                     .show()
+                else -> {
+                }
             }
 
         })

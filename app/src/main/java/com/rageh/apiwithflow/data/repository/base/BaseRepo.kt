@@ -1,11 +1,15 @@
 package com.rageh.apiwithflow.data.repository.base
 
-import com.rageh.apiwithflow.data.api.entity.Result
+import com.rageh.apiwithflow.data.api.GeneralErrorHandler
+import com.rageh.apiwithflow.data.api.entity.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.transform
+import javax.inject.Inject
 
 open class BaseRepo {
+    @Inject
+    lateinit var errorHandler: GeneralErrorHandler
 
     protected fun loadFromApi(api: () -> Flow<Any>) =
         api.invoke().catch {
@@ -13,9 +17,9 @@ open class BaseRepo {
             emit(it)
         }.transform {
             if (it is Exception) {
-                emit(Result.error(it.localizedMessage, it))
+                emit(Resource.error(errorHandler.getErrorMessage(errorHandler.getError(it)), it))
             } else {
-                emit(Result.success(it))
+                emit(Resource.success(it))
             }
         }
 }

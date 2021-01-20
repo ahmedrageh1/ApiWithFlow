@@ -1,4 +1,4 @@
-package com.rageh.apiwithflow.data.api
+package com.rageh.apiwithflow.data.api.retrofit
 
 import com.rageh.apiwithflow.data.entity.Album
 import com.rageh.apiwithflow.data.entity.Post

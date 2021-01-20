@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ApiWithFlow</string>
+    <string name="msg_unknown_error">Unknown Error Occurred.</string>
+    <string name="msg_network_error">Network error, Please check your internet connection.</string>
+    <string name="msg_auth_error">Authentication error, please re-login.</string>
+    <string name="msg_not_found_error">Sorry, the requested item not available.</string>
 </resources>

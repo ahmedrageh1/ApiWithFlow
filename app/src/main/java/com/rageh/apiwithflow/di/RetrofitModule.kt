@@ -1,7 +1,8 @@
 package com.rageh.apiwithflow.di
 
-import com.rageh.apiwithflow.data.api.Webservice
-import com.rageh.apiwithflow.retrofit.adapter.FlowCallAdapterFactory
+import com.rageh.apiwithflow.data.api.BASE_URL
+import com.rageh.apiwithflow.data.api.retrofit.Webservice
+import com.rageh.apiwithflow.data.api.retrofit.adapter.FlowCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,7 +51,4 @@ class RetrofitModule {
         retrofit.create(Webservice::class.java)
 
 
-    companion object {
-        const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-    }
 }

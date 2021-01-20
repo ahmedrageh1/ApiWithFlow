@@ -1,6 +1,6 @@
 package com.rageh.apiwithflow.data.repository
 
-import com.rageh.apiwithflow.data.api.Webservice
+import com.rageh.apiwithflow.data.api.retrofit.Webservice
 import com.rageh.apiwithflow.data.repository.base.BaseRepo
 import javax.inject.Inject
 import javax.inject.Singleton

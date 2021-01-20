@@ -1,4 +1,4 @@
-package com.rageh.apiwithflow.retrofit.adapter
+package com.rageh.apiwithflow.data.api.retrofit.adapter
 
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
