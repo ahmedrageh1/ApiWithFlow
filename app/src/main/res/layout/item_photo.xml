@@ -6,42 +6,48 @@
 
     <data>
 
-        <import type="com.rageh.apiwithflow.data.entity.Album" />
-
-        <import type="com.rageh.apiwithflow.presentation.base.BaseSimpleBindingAdapter.OnItemClickListener" />
+        <import type="com.rageh.apiwithflow.data.entity.Photo" />
 
         <variable
-            name="album"
-            type="Album" />
-
-        <variable
-            name="onItemClickListener"
-            type="OnItemClickListener" />
+            name="photo"
+            type="Photo" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()-> onItemClickListener.onItemClicked(album)}"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/photo_iv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:error="@{@drawable/ic_baseline_error_outline_72}"
+                app:imageUrl="@{photo.url}"
+                app:layout_constraintBottom_toTopOf="@id/title_tv"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/title_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{album.title}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:padding="8dp"
+                android:text="@{photo.title}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/photo_iv"
                 tools:text="Title" />
 
 

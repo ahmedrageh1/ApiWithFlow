@@ -15,7 +15,7 @@ data class Photo constructor(
     val title: String? = null,
     @SerializedName("url")
     @Expose
-    val url: String? = null,
+    val url: String?,
     @SerializedName("thumbnailUrl")
     @Expose
     val thumbnailUrl: String? = null

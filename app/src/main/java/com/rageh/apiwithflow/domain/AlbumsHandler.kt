@@ -8,4 +8,6 @@ import javax.inject.Singleton
 class AlbumsHandler @Inject constructor(private val repo: AlbumsRepo) {
 
     fun getAlbums() = repo.getAlbums()
+
+    fun getPhotos(albumId: Long? = null) = repo.getPhotos(albumId)
 }

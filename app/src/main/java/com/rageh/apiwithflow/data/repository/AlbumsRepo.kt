@@ -10,5 +10,7 @@ class AlbumsRepo @Inject constructor(private val webservice: Webservice) : BaseR
 
     fun getAlbums() = loadFromApi(webservice::getAlbums)
 
+    fun getPhotos(albumId: Long? = null) = loadFromApi { (webservice::getPhotos)(albumId) }
+
 
 }

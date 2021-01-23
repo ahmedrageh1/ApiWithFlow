@@ -25,6 +25,25 @@
             android:id="@+id/action_to_postsListFragment"
             app:destination="@id/postsListFragment"
             app:popUpTo="@id/main" />
+        <action
+            android:id="@+id/showAlbumPhotos"
+            app:destination="@id/photosListFragment">
+            <argument
+                android:name="albumId"
+                android:defaultValue="0L"
+                app:argType="long" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/photosListFragment"
+        android:name="com.rageh.apiwithflow.presentation.ui.albums.PhotosListFragment"
+        android:label="fragment_photos"
+        tools:layout="@layout/fragment_photos_list">
+        <argument
+            android:name="albumId"
+            android:defaultValue="0L"
+            app:argType="long" />
     </fragment>
 
 </navigation>

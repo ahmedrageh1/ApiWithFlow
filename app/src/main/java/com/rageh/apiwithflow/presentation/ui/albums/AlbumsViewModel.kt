@@ -13,9 +13,16 @@ import kotlinx.coroutines.Dispatchers
 class AlbumsViewModel @ViewModelInject constructor(private val handler: AlbumsHandler) :
     ViewModel() {
 
+    var albumId = 0L
+
     val albumsData = liveData(Dispatchers.IO) {
         emit(Resource.loading())
         emitSource(handler.getAlbums().asLiveData(Dispatchers.IO))
+    }
+
+    val photosData = liveData(Dispatchers.IO) {
+        emit(Resource.loading())
+        emitSource(handler.getPhotos(albumId).asLiveData(Dispatchers.IO))
     }
 
 }

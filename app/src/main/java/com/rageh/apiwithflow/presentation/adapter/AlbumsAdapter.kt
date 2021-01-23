@@ -8,7 +8,7 @@ import com.rageh.apiwithflow.databinding.ItemAlbumBinding
 import com.rageh.apiwithflow.presentation.base.BaseSimpleBindingAdapter
 
 
-class AlbumsAdapter :
+class AlbumsAdapter(private val onItemClickListener: OnItemClickListener<Album>) :
     BaseSimpleBindingAdapter<Album, ItemAlbumBinding>(object :
         DiffUtil.ItemCallback<Album>() {
         override fun areItemsTheSame(oldItem: Album, newItem: Album) =
@@ -24,6 +24,7 @@ class AlbumsAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder<ItemAlbumBinding>, position: Int) {
         holder.viewBinding.setVariable(BR.album, getItem(position))
+        holder.viewBinding.setVariable(BR.onItemClickListener, onItemClickListener)
         holder.viewBinding.executePendingBindings()
     }
 
