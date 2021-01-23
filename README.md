@@ -13,10 +13,10 @@ and how to access the same flow through all application layers with configuratio
 * Kotlin Flow
 * Lifecycle
 * LiveData
+* Image loading with picasso
 
 ### Next Updates
 
-* Add heavy image loading with picasso 
 * Add Room database caching 
 
 ### Sources
