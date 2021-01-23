@@ -19,9 +19,11 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
     }
 
     override fun onTabSelected(tab: TabLayout.Tab?) {
+        val navController = findNavController(R.id.nav_host_fragment)
+        navController.popBackStack(R.id.main, true)
         when (tab?.position) {
-            0 -> findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_postsListFragment)
-            1 -> findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_albumsListFragment)
+            0 -> navController.navigate(R.id.postsListFragment)
+            1 -> navController.navigate(R.id.albumsListFragment)
         }
     }
 

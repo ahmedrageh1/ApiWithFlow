@@ -50,7 +50,7 @@ class AlbumsListFragment : Fragment(), BaseSimpleBindingAdapter.OnItemClickListe
     }
 
     override fun onItemClicked(item: Album) {
-        findNavController().navigate(R.id.showAlbumPhotos, bundleOf("albumId" to item.id))
+        findNavController().navigate(R.id.photosListFragment, bundleOf("albumId" to item.id))
     }
 
     private fun observeDataChanges() {

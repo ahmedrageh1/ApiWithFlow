@@ -9,31 +9,13 @@
         android:id="@+id/postsListFragment"
         android:name="com.rageh.apiwithflow.presentation.ui.posts.PostsListFragment"
         android:label="fragment_posts"
-        tools:layout="@layout/fragment_posts_list">
-        <action
-            android:id="@+id/action_to_albumsListFragment"
-            app:destination="@id/albumsListFragment"
-            app:popUpTo="@id/main" />
-    </fragment>
+        tools:layout="@layout/fragment_posts_list" />
 
     <fragment
         android:id="@+id/albumsListFragment"
         android:name="com.rageh.apiwithflow.presentation.ui.albums.AlbumsListFragment"
         android:label="fragment_albums"
-        tools:layout="@layout/fragment_albums_list">
-        <action
-            android:id="@+id/action_to_postsListFragment"
-            app:destination="@id/postsListFragment"
-            app:popUpTo="@id/main" />
-        <action
-            android:id="@+id/showAlbumPhotos"
-            app:destination="@id/photosListFragment">
-            <argument
-                android:name="albumId"
-                android:defaultValue="0L"
-                app:argType="long" />
-        </action>
-    </fragment>
+        tools:layout="@layout/fragment_albums_list" />
 
     <fragment
         android:id="@+id/photosListFragment"
