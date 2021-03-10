@@ -1,16 +1,16 @@
 package com.rageh.apiwithflow.presentation.ui.albums
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import com.rageh.apiwithflow.data.api.entity.Resource
 import com.rageh.apiwithflow.domain.AlbumsHandler
-import dagger.hilt.android.scopes.FragmentScoped
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-@FragmentScoped
-class AlbumsViewModel @ViewModelInject constructor(private val handler: AlbumsHandler) :
+@HiltViewModel
+class AlbumsViewModel @Inject constructor(private val handler: AlbumsHandler) :
     ViewModel() {
 
     var albumId = 0L

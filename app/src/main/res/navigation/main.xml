@@ -15,7 +15,11 @@
         android:id="@+id/albumsListFragment"
         android:name="com.rageh.apiwithflow.presentation.ui.albums.AlbumsListFragment"
         android:label="fragment_albums"
-        tools:layout="@layout/fragment_albums_list" />
+        tools:layout="@layout/fragment_albums_list">
+        <action
+            android:id="@+id/action_albumsListFragment_to_photosListFragment"
+            app:destination="@id/photosListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/photosListFragment"
@@ -27,5 +31,15 @@
             android:defaultValue="0L"
             app:argType="long" />
     </fragment>
+    <action
+        android:id="@+id/action_global_albumsListFragment"
+        app:destination="@id/albumsListFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/main" />
+    <action
+        android:id="@+id/action_global_postsListFragment"
+        app:destination="@id/postsListFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/main" />
 
 </navigation>

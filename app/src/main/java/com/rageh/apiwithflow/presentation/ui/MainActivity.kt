@@ -19,12 +19,14 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
     }
 
     override fun onTabSelected(tab: TabLayout.Tab?) {
-        val navController = findNavController(R.id.nav_host_fragment)
-        navController.popBackStack(R.id.main, true)
-        when (tab?.position) {
-            0 -> navController.navigate(R.id.postsListFragment)
-            1 -> navController.navigate(R.id.albumsListFragment)
-        }
+        //kotlin is very flexible
+        findNavController(R.id.nav_host_fragment).navigate(
+            when (tab?.position) {
+                0 -> R.id.action_global_postsListFragment
+                1 -> R.id.action_global_albumsListFragment
+                else -> 0
+            }
+        )
     }
 
     override fun onTabUnselected(tab: TabLayout.Tab?) {}
