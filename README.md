@@ -14,10 +14,7 @@ and how to access the same flow through all application layers with configuratio
 * Lifecycle
 * LiveData
 * Image loading with picasso
-
-### Next Updates
-
-* Add Room database caching 
+* Room database caching
 
 ### Sources
 
