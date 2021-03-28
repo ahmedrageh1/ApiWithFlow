@@ -33,7 +33,7 @@ class PostsRepo @Inject constructor(
 
     private fun getAPIFlow() = loadFromApi(webservice::getPosts)
 
-    private fun getCacheFlow() = postsDao.getAllPosts().transform {
+    private suspend fun getCacheFlow() = postsDao.getAllPosts().transform {
         if (it.isNotEmpty()) {
             emit(Resource.success(it))
         }

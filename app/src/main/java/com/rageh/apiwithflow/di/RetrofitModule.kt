@@ -1,6 +1,5 @@
 package com.rageh.apiwithflow.di
 
-import com.chenxyu.retrofit.adapter.FlowCallAdapterFactory
 import com.rageh.apiwithflow.data.api.BASE_URL
 import com.rageh.apiwithflow.data.api.retrofit.Webservice
 import dagger.Module
@@ -41,7 +40,6 @@ class RetrofitModule {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(gsonConverterFactory)
-            .addCallAdapterFactory(FlowCallAdapterFactory())
             .client(client).build()
 
     @Inject

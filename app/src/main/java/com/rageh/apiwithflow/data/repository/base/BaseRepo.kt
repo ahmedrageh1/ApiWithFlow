@@ -5,8 +5,8 @@ import com.rageh.apiwithflow.data.api.entity.ErrorEntity
 import com.rageh.apiwithflow.data.api.entity.Resource
 import com.rageh.apiwithflow.util.NetworkUtils
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 open class BaseRepo {
@@ -16,26 +16,25 @@ open class BaseRepo {
     @Inject
     lateinit var networkUtils: NetworkUtils
 
-    protected fun loadFromApi(api: () -> Flow<Any>) =
+    protected fun loadFromApi(api: suspend () -> Any) =
         if (networkUtils.isNetworkAvailable()) {
-            api.invoke().catch {
-                it.printStackTrace()
-                emit(it)
-            }.transform {
-                withContext(Dispatchers.IO) {
-                    if (it is Exception) {
-                        emit(
-                            Resource.error(
-                                errorHandler.getErrorMessage(errorHandler.getError(it)),
-                                it
-                            )
+            flow {
+                try {
+                    val result = api.invoke()
+                    emit(Resource.success(result))
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    emit(
+                        Resource.error(
+                            errorHandler.getErrorMessage(errorHandler.getError(e)),
+                            e
                         )
-                    } else {
-                        emit(Resource.success(it))
-                    }
+                    )
                 }
             }.flowOn(Dispatchers.IO)
         } else {
-            flow { emit(Resource.error<Nothing>(errorHandler.getErrorMessage(ErrorEntity.Network))) }
+            flow { emit(Resource.error<Nothing>(errorHandler.getErrorMessage(ErrorEntity.Network))) }.flowOn(
+                Dispatchers.IO
+            )
         }
 }
