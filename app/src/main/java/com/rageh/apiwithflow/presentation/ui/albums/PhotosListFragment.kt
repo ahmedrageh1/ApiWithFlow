@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.rageh.apiwithflow.R
 import com.rageh.apiwithflow.data.api.entity.Status
 import com.rageh.apiwithflow.data.entity.Photo
 import com.rageh.apiwithflow.databinding.FragmentPhotosListBinding
@@ -35,16 +33,15 @@ class PhotosListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate<FragmentPhotosListBinding>(
+        return FragmentPhotosListBinding.inflate(
             inflater,
-            R.layout.fragment_photos_list,
             container,
             false
         ).apply {
+            binding = this
             lifecycleOwner = viewLifecycleOwner
             vm = viewModel
-        }
-        return binding.root
+        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

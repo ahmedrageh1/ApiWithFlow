@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.rageh.apiwithflow.R
 import com.rageh.apiwithflow.data.api.entity.Status
 import com.rageh.apiwithflow.data.entity.Album
 import com.rageh.apiwithflow.databinding.FragmentAlbumsListBinding
@@ -30,16 +28,15 @@ class AlbumsListFragment : Fragment(), BaseSimpleBindingAdapter.OnItemClickListe
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate<FragmentAlbumsListBinding>(
+        return FragmentAlbumsListBinding.inflate(
             inflater,
-            R.layout.fragment_albums_list,
             container,
             false
         ).apply {
+            binding = this
             lifecycleOwner = viewLifecycleOwner
             vm = viewModel
-        }
-        return binding.root
+        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

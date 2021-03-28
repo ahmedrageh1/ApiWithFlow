@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.rageh.apiwithflow.R
 import com.rageh.apiwithflow.data.api.entity.Status
 import com.rageh.apiwithflow.data.entity.Post
 import com.rageh.apiwithflow.databinding.FragmentPostsListBinding
@@ -28,16 +26,15 @@ class PostsListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate<FragmentPostsListBinding>(
+        return FragmentPostsListBinding.inflate(
             inflater,
-            R.layout.fragment_posts_list,
             container,
             false
         ).apply {
+            binding = this
             lifecycleOwner = viewLifecycleOwner
             vm = viewModel
-        }
-        return binding.root
+        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,12 +45,14 @@ class PostsListFragment : Fragment() {
 
     private fun observeDataChanges() {
         viewModel.postsData.observe(viewLifecycleOwner, { result ->
-            when (result.status.get()) {
-                Status.SUCCESS -> result.data?.let { adapter.submitList(it as List<Post>) }
-                Status.ERROR -> Toast.makeText(requireContext(), result.msg, Toast.LENGTH_SHORT)
-                    .show()
-                else -> {
+            result.data?.let {
+                if (it is List<*>) {
+                    adapter.submitList(it as List<Post>)
                 }
+            }
+            if (result.status.get() == Status.ERROR) {
+                Toast.makeText(requireContext(), result.msg, Toast.LENGTH_SHORT)
+                    .show()
             }
 
         })
