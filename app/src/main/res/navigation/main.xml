@@ -8,13 +8,13 @@
     <fragment
         android:id="@+id/postsListFragment"
         android:name="com.rageh.apiwithflow.presentation.ui.posts.PostsListFragment"
-        android:label="fragment_posts"
+        android:label="@string/posts"
         tools:layout="@layout/fragment_posts_list" />
 
     <fragment
         android:id="@+id/albumsListFragment"
         android:name="com.rageh.apiwithflow.presentation.ui.albums.AlbumsListFragment"
-        android:label="fragment_albums"
+        android:label="@string/albums"
         tools:layout="@layout/fragment_albums_list">
         <action
             android:id="@+id/action_albumsListFragment_to_photosListFragment"
@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/photosListFragment"
         android:name="com.rageh.apiwithflow.presentation.ui.albums.PhotosListFragment"
-        android:label="fragment_photos"
+        android:label="@string/photos"
         tools:layout="@layout/fragment_photos_list">
         <argument
             android:name="albumId"

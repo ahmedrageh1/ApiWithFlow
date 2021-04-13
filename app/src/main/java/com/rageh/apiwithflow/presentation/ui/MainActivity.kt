@@ -4,6 +4,10 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.tabs.TabLayout
 import com.rageh.apiwithflow.R
 import com.rageh.apiwithflow.databinding.ActivityMainBinding
@@ -11,12 +15,29 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
+
     private val viewModel: MainViewModel by viewModels()
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var appBarConfigurations: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupAppBar()
+        setupTabLayout()
+    }
+
+    private fun setupAppBar() {
+        setSupportActionBar(binding.toolbar)
+        val navController =
+            (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
+        appBarConfigurations =
+            AppBarConfiguration(setOf(R.id.postsListFragment, R.id.albumsListFragment))
+        setupActionBarWithNavController(navController, appBarConfigurations)
+    }
+
+    private fun setupTabLayout() {
         binding.tabLayout.selectTab(
             binding.tabLayout.getTabAt(
                 viewModel.savedStateHandle.get<Int?>(
@@ -25,6 +46,11 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
             )
         )
         binding.tabLayout.addOnTabSelectedListener(this)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfigurations)
+                || super.onSupportNavigateUp()
     }
 
     override fun onTabSelected(tab: TabLayout.Tab?) {

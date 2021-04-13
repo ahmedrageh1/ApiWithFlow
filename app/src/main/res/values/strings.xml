@@ -6,4 +6,5 @@
     <string name="msg_not_found_error">Sorry, the requested item not available.</string>
     <string name="posts">Posts</string>
     <string name="albums">Albums</string>
+    <string name="photos">Photos</string>
 </resources>
