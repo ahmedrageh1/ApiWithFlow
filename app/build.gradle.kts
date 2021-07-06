@@ -37,9 +37,7 @@ android {
             )
         }
     }
-    kotlinOptions {
-        jvmTarget = AppVersions.jvmTarget
-    }
+
 }
 
 dependencies {
@@ -48,7 +46,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.recyclerview:recyclerview:1.2.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     //Navigation
     val navVersion = findProperty("navVersion")
@@ -56,7 +54,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     //Core
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
 
     //ViewModel & Lifecycle
     val lifecycleVersion = "2.3.1"
@@ -79,7 +77,7 @@ dependencies {
     androidTestImplementation("androidx.room:room-testing:$roomVersion")
 
     //Network
-    implementation("com.google.code.gson:gson:2.8.6")
+    implementation("com.google.code.gson:gson:2.8.7")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.7.2")
