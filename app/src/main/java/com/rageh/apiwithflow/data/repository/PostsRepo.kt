@@ -7,8 +7,10 @@ import com.rageh.apiwithflow.data.cache.dao.PostsDao
 import com.rageh.apiwithflow.data.entity.Post
 import com.rageh.apiwithflow.data.repository.base.BaseRepo
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -20,16 +22,20 @@ class PostsRepo @Inject constructor(
     private val webservice: Webservice
 ) : BaseRepo() {
 
-    fun getPosts() = flow {
-        getAPIFlow().collect { result ->
-            if (result.status.get() == Status.SUCCESS) {
-                cachePostsResult(result)
-            } else {
-                emit(result)
+    fun getPosts() = callbackFlow<Resource<*>> {
+        async(Dispatchers.IO) {
+            getAPIFlow().collect { result ->
+                if (result.status.get() == Status.SUCCESS) {
+                    cachePostsResult(result)
+                } else {
+                    channel.send(result)
+                }
             }
         }
-        getCacheFlow().collect { emit(it) }
-    }
+        getCacheFlow().collect {
+            channel.send(it)
+        }
+    }.flowOn(Dispatchers.IO)
 
     private fun getAPIFlow() = loadFromApi(webservice::getPosts)
 

@@ -20,4 +20,3 @@ and how to access the same flow through all application layers with configuratio
 
 * https://developer.android.com/jetpack/guide
 * https://proandroiddev.com/android-error-handling-in-clean-architecture-844a7fc0dc03
-* https://github.com/chenxyu/retrofit-adapter-flow
