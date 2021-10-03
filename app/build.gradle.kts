@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AppVersions.compileSdkVersion)
+    compileSdk= AppVersions.compileSdkVersion
 
     defaultConfig {
         applicationId = Config.applicationId
-        minSdkVersion(AppVersions.minSdkVersion)
-        targetSdkVersion(AppVersions.targetSdkVersion)
+        minSdk = AppVersions.minSdkVersion
+        targetSdk = AppVersions.targetSdkVersion
         versionCode = Config.versionCode
         versionName = Config.versionName
 
@@ -30,7 +30,8 @@ android {
         }
 
         getByName("release") {
-            minifyEnabled(true)
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -41,15 +42,15 @@ android {
 }
 
 dependencies {
-
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
     //Design
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.appcompat:appcompat:1.3.1")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     //Navigation
-    val navVersion = findProperty("navVersion")
+    val navVersion = rootProject.extra["navVersion"]
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
@@ -61,7 +62,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
 
     //Hilt
-    val hiltVersion = findProperty("hiltVersion")
+    val hiltVersion = rootProject.extra["hiltVersion"]
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
@@ -80,10 +81,10 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.7")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.7.2")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.8.0")
     implementation("com.squareup.picasso:picasso:2.71828")
 
     testImplementation("junit:junit:4.+")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }

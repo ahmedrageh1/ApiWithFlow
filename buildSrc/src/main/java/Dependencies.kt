@@ -1,6 +1,6 @@
 //Should be in main for all app modules and flavors
 object AppVersions {
-    const val compileSdkVersion = 30
+    const val compileSdkVersion = 31
     const val targetSdkVersion = compileSdkVersion
     const val minSdkVersion = 21
     const val jvmTarget = "1.8"
