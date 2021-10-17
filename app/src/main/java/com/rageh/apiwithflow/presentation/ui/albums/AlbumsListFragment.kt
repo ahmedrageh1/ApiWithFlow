@@ -42,6 +42,7 @@ class AlbumsListFragment : Fragment(), BaseSimpleBindingAdapter.OnItemClickListe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
+        binding.refreshLayout.setOnRefreshListener { viewModel.loadAlbums() }
         observeDataChanges()
     }
 
@@ -55,14 +56,12 @@ class AlbumsListFragment : Fragment(), BaseSimpleBindingAdapter.OnItemClickListe
 
     private fun observeDataChanges() {
         viewModel.albumsData.observe(viewLifecycleOwner, { result ->
+            binding.refreshLayout.isRefreshing = result.status.get() == Status.LOADING
             when (result.status.get()) {
-                Status.SUCCESS -> result.data?.let { adapter.submitList(it as List<Album>) }
+                Status.SUCCESS -> result.data?.let { adapter.submitList(it) }
                 Status.ERROR -> Toast.makeText(requireContext(), result.msg, Toast.LENGTH_SHORT)
                     .show()
-                else -> {
-                }
             }
-
         })
     }
 }
