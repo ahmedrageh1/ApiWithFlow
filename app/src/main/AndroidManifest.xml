@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApiWithFlow">
         <activity
+            android:theme="@style/Theme.App.Starting"
             android:name=".presentation.ui.MainActivity"
             android:exported="true">
             <intent-filter>
