@@ -1,8 +1,8 @@
 package com.rageh.apiwithflow.data.repository.base
 
+import com.rageh.apiwithflow.data.api.ErrorEntity
 import com.rageh.apiwithflow.data.api.GeneralErrorHandler
-import com.rageh.apiwithflow.data.api.entity.ErrorEntity
-import com.rageh.apiwithflow.data.api.entity.Resource
+import com.rageh.apiwithflow.domain.entity.Resource
 import com.rageh.apiwithflow.util.NetworkUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch

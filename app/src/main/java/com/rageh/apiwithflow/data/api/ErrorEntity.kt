@@ -1,4 +1,4 @@
-package com.rageh.apiwithflow.data.api.entity
+package com.rageh.apiwithflow.data.api
 
 sealed class ErrorEntity {
 

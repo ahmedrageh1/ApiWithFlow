@@ -6,7 +6,7 @@
 
     <data>
 
-        <import type="com.rageh.apiwithflow.data.entity.Post" />
+        <import type="com.rageh.apiwithflow.domain.entity.Post" />
 
         <variable
             name="post"

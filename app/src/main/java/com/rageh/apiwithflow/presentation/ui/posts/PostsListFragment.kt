@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.rageh.apiwithflow.data.api.entity.Status
-import com.rageh.apiwithflow.data.entity.Post
 import com.rageh.apiwithflow.databinding.FragmentPostsListBinding
+import com.rageh.apiwithflow.domain.entity.Post
+import com.rageh.apiwithflow.domain.entity.Status
 import com.rageh.apiwithflow.presentation.adapter.PostsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,4 +1,4 @@
-package com.rageh.apiwithflow.data.entity
+package com.rageh.apiwithflow.data.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -20,3 +20,12 @@ data class Photo constructor(
     @Expose
     val thumbnailUrl: String? = null
 )
+
+fun Photo.mapToEntity(): com.rageh.apiwithflow.domain.entity.Photo =
+    com.rageh.apiwithflow.domain.entity.Photo(
+        this.albumId,
+        this.id,
+        this.title,
+        this.url,
+        this.thumbnailUrl
+    )

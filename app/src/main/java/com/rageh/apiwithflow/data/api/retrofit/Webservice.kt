@@ -1,8 +1,8 @@
 package com.rageh.apiwithflow.data.api.retrofit
 
-import com.rageh.apiwithflow.data.entity.Album
-import com.rageh.apiwithflow.data.entity.Photo
-import com.rageh.apiwithflow.data.entity.Post
+import com.rageh.apiwithflow.data.model.Album
+import com.rageh.apiwithflow.data.model.Photo
+import com.rageh.apiwithflow.data.model.Post
 import retrofit2.http.GET
 import retrofit2.http.Query
 

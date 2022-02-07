@@ -1,4 +1,4 @@
-package com.rageh.apiwithflow.data.entity
+package com.rageh.apiwithflow.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -26,3 +26,7 @@ data class Post constructor(
     @Expose
     val body: String? = null
 )
+
+fun Post.mapToEntity(): com.rageh.apiwithflow.domain.entity.Post =
+    com.rageh.apiwithflow.domain.entity.Post(this.userId, this.id, this.title, this.body)
+

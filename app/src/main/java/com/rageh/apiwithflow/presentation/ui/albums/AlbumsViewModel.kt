@@ -1,9 +1,9 @@
 package com.rageh.apiwithflow.presentation.ui.albums
 
 import androidx.lifecycle.*
-import com.rageh.apiwithflow.data.api.entity.Resource
-import com.rageh.apiwithflow.data.entity.Album
-import com.rageh.apiwithflow.domain.AlbumsHandler
+import com.rageh.apiwithflow.domain.entity.Album
+import com.rageh.apiwithflow.domain.entity.Resource
+import com.rageh.apiwithflow.domain.handler.AlbumsHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -22,12 +22,13 @@ class AlbumsViewModel @Inject constructor(private val handler: AlbumsHandler) :
     fun loadAlbums() {
         viewModelScope.launch(Dispatchers.IO) {
             _albumsLiveData.postValue(Resource.loading())
-            handler.getAlbums().first().also { _albumsLiveData.postValue( it as Resource<List<Album>> )}
+            handler.getAlbums().first()
+                .also { _albumsLiveData.postValue(it as Resource<List<Album>>) }
         }
     }
 
     val photosData = liveData(Dispatchers.IO) {
-        emit(Resource.loading())
+        emit(Resource.loading<Nothing>())
         emitSource(handler.getPhotos(albumId).asLiveData(Dispatchers.IO))
     }
 

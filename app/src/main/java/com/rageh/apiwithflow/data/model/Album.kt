@@ -1,4 +1,4 @@
-package com.rageh.apiwithflow.data.entity
+package com.rageh.apiwithflow.data.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -14,3 +14,7 @@ data class Album constructor(
     @Expose
     val title: String? = null
 )
+
+fun Album.mapToEntity(): com.rageh.apiwithflow.domain.entity.Album =
+    com.rageh.apiwithflow.domain.entity.Album(this.userId, this.id, this.title)
+

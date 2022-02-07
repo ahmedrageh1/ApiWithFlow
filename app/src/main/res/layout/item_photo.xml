@@ -6,7 +6,7 @@
 
     <data>
 
-        <import type="com.rageh.apiwithflow.data.entity.Photo" />
+        <import type="com.rageh.apiwithflow.domain.entity.Photo" />
 
         <variable
             name="photo"

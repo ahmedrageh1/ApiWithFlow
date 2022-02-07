@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.rageh.apiwithflow.data.api.entity.Status
-import com.rageh.apiwithflow.data.entity.Album
 import com.rageh.apiwithflow.databinding.FragmentAlbumsListBinding
+import com.rageh.apiwithflow.domain.entity.Album
+import com.rageh.apiwithflow.domain.entity.Status
 import com.rageh.apiwithflow.presentation.adapter.AlbumsAdapter
 import com.rageh.apiwithflow.presentation.base.BaseSimpleBindingAdapter
 import dagger.hilt.android.AndroidEntryPoint

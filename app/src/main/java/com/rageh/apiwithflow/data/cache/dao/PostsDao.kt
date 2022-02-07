@@ -3,7 +3,7 @@ package com.rageh.apiwithflow.data.cache.dao
 import androidx.room.Dao
 import androidx.room.Query
 import com.rageh.apiwithflow.data.cache.base.BaseDao
-import com.rageh.apiwithflow.data.entity.Post
+import com.rageh.apiwithflow.data.model.Post
 import kotlinx.coroutines.flow.Flow
 
 @Dao

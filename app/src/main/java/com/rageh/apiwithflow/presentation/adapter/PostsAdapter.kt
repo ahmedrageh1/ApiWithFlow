@@ -3,8 +3,8 @@ package com.rageh.apiwithflow.presentation.adapter
 import androidx.recyclerview.widget.DiffUtil
 import com.rageh.apiwithflow.BR
 import com.rageh.apiwithflow.R
-import com.rageh.apiwithflow.data.entity.Post
 import com.rageh.apiwithflow.databinding.ItemPostBinding
+import com.rageh.apiwithflow.domain.entity.Post
 import com.rageh.apiwithflow.presentation.base.BaseSimpleBindingAdapter
 
 
