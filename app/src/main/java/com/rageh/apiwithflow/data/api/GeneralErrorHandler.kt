@@ -1,7 +1,6 @@
 package com.rageh.apiwithflow.data.api
 
 import com.rageh.apiwithflow.R
-import com.rageh.apiwithflow.data.api.entity.ErrorEntity
 import com.rageh.apiwithflow.util.ResourcesResolver
 import retrofit2.HttpException
 import java.io.IOException
