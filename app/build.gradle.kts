@@ -60,7 +60,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
 
     //ViewModel & Lifecycle
-    val lifecycleVersion = "2.4.0"
+    val lifecycleVersion = "2.4.1"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
 
     //Hilt
@@ -73,7 +73,7 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.0.0")
 
     //Room
-    val roomVersion = "2.2.4"
+    val roomVersion = "2.4.1"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")

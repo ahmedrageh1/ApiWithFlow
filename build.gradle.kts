@@ -3,7 +3,7 @@ buildscript {
 
     val kotlinVersion by extra("1.6.10")
     val hiltVersion by extra("2.40.5")
-    val navVersion by extra("2.3.5")
+    val navVersion by extra("2.4.1")
     repositories {
         google()
         mavenCentral()
